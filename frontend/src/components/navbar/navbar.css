@@ -1,0 +1,62 @@
+.navbar {
+  background-color: rgb(39, 18, 78); /* Transparent background */
+  overflow: hidden;
+  border-radius: 5px;
+  border-color:white;
+  border: 2px solid white; 
+  position: sticky;
+  top: 0; /* Ensure it stays at the top */
+  width: 100%; /* Ensure it takes the full width */
+  margin: 0; /* Reset margin */
+  padding: 10px 0; /* Adjust padding as needed */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+  
+  .navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between; /* Evenly spread items */
+    align-items: center; /* Align items vertically */
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  .navbar-item {
+    flex: 1; /* Allow items to take up equal space */
+    padding: 14px; /* Adjusted padding for uniformity */
+    text-align: center; /* Center text within each item */
+    position: relative;
+    font-size: 20px;
+  }
+  
+  .navbar-item:not(:last-child)::after {
+    content: '';
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 75%; /* Increase height to take up most of the navbar's height */
+    width: 1px; /* Make the pipe thinner */
+    background-color: white; /* Pipe color */
+  }
+  
+  .navbar-link {
+    color: white;
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    display: block;
+  }
+  
+  .navbar-link:hover {
+    color: white;
+    border-radius: 10%;
+    font-weight: bolder;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    padding: 8px 4px;
+    background-color: rgba(68, 74, 121, 0.8);
+  }
+  
