@@ -1,0 +1,50 @@
+.home-container h1 {
+    color: #727ab4;
+  }
+  
+.home-container p {
+    font-size: 18px;
+    color: #ffffff;
+
+  }
+
+.card-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr); /* Create two equal-width columns */
+  gap: 20px; /* Space between the cards */
+  flex-wrap: wrap;
+}
+
+/* Styles for the Card component */
+.card {
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  /* margin: 16px; */
+  text-align: center;
+  transition: transform 0.2s;
+  height: 110px;
+  width: 75%;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card-link {
+  text-decoration: none;
+  color: white;
+}
+
+.card-content h2 {
+  margin: 0;
+  font-size: 38px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-content p {
+  margin: 8px 0 0;
+  color: #949ee8;
+  font-size: 20px;
+}
