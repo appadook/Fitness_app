@@ -13,24 +13,33 @@ const Workouts = () => {
   const fetchWorkouts = async () => {
     try {
       const response = await apis.getWorkouts();
-      console.log('Fetched workouts:', response.data); // Log the response data
-      setWorkouts(response.data);
+      if (Array.isArray(response.data.rows)) {
+        setWorkouts(response.data.rows);
+      } else {
+        setError('Fetched data is not an array');
+      }
     } catch (error) {
       console.error('Error fetching workouts', error);
+      setError('Failed to fetch workouts');
     }
   };
 
   return (
     <div className="workouts-container">
       <h1>Workouts Page</h1>
+      {error && <p className="error">{error}</p>} {/* Display error message */}
       <ul className="workouts-list">
-        {workouts.map((workout) => (
-          <li key={workout.id} className="workout-item">
-            <h2>{workout.exercise}</h2>
-            <p>{workout.purpose}</p>
-            <span>{workout.active ? 'Active' : 'Inactive'}</span>
-          </li>
-        ))}
+        {workouts.length > 0 ? (
+          workouts.map((workout) => (
+            <li key={workout.id} className="workout-item">
+              <h2>{workout.exercise}</h2>
+              <p>{workout.purpose}</p>
+              <span>{workout.active ? 'Active' : 'Inactive'}</span>
+            </li>
+          ))
+        ) : (
+          <p>No workouts found.</p>
+        )}
       </ul>
     </div>
   );
