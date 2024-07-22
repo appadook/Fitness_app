@@ -1,0 +1,30 @@
+.header {
+    background-color: #444a79;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .header-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header-item {
+    margin: 0 15px;
+  }
+  
+  .header-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .header-item a:hover {
+    text-decoration: underline;
+  }
+  

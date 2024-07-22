@@ -21,7 +21,7 @@
   border: 3px solid #ccc;
   border-radius: 8px;
   padding: 16px;
-  /* margin: 16px; */
+  margin: 16px;
   text-align: center;
   transition: transform 0.2s;
   height: 110px;
