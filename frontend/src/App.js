@@ -5,6 +5,7 @@ import Home from './components/Home/home';
 import Workouts from './components/workouts/workouts';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
+import WeekSessions from './components/weeksSessions/weeksSessions';
 // import PersonalRecords from './components/PersonalRecords/PersonalRecords';
 // import LogWorkout from './components/LogWorkout/LogWorkout';
 import './App.css';
@@ -18,6 +19,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/workouts" element={<Workouts />} />
+          <Route path="weeksSessions/:workoutId" element={< WeekSessions/>} />
           {/* <Route path="/personal-records" element={<PersonalRecords />} /> */}
           {/* <Route path="/log-workout" element={<LogWorkout />} /> */}
         </Routes>

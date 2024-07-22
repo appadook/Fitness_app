@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import apis from '../../services/api'; // Import the api functions
-// import './Workouts.css';
+import './workouts.css';
 
 const Workouts = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -31,11 +33,14 @@ const Workouts = () => {
       <ul className="workouts-list">
         {workouts.length > 0 ? (
           workouts.map((workout) => (
-            <li key={workout.id} className="workout-item">
+            <ul key={workout.id} className="workout-item">
               <h2>{workout.exercise}</h2>
               <p>{workout.purpose}</p>
+              <Link to={`/weeksSessions/${workout.id}`} className="view-weeks-link">
+                View Weeks and Sessions
+              </Link>
               <span>{workout.active ? 'Active' : 'Inactive'}</span>
-            </li>
+            </ul>
           ))
         ) : (
           <p>No workouts found.</p>
