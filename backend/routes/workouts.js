@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
 
 // Add a new workout
 router.post('/', (req, res) => {
-    const { exercise, purpose, active } = req.body;
-    const query = 'INSERT INTO workouts (exercise, purpose, active) VALUES ($1, $2, $3) RETURNING *';
-    const values = [exercise, purpose, active];
+    const { name, purpose, active } = req.body;
+    const query = 'INSERT INTO workouts (name, purpose, active) VALUES ($1, $2, $3) RETURNING *';
+    const values = [name, purpose, active];
   
     db.query(query, values, (err, result) => {
       if (err) {
@@ -33,9 +33,9 @@ router.post('/', (req, res) => {
 // Update a workout
 router.put('/:id', (req, res) => {
     const { id } = req.params;
-    const { exercise, purpose, active } = req.body;
-    const query = 'UPDATE workouts SET exercise = $1, purpose = $2, active = $3 WHERE id = $4 RETURNING *';
-    const values = [exercise, purpose, active, id];
+    const { name, purpose, active } = req.body;
+    const query = 'UPDATE workouts SET name = $1, purpose = $2, active = $3 WHERE id = $4 RETURNING *';
+    const values = [name, purpose, active, id];
   
     db.query(query, values, (err, result) => {
       if (err) {

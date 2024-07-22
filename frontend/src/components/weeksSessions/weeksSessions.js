@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import apis from '../../services/api'; // Import the api functions
 import './WeeksSessions.css';
@@ -33,7 +33,9 @@ const WeeksSessions = () => {
           <h2>Week {week}</h2>
           <ul>
             {data[week].map((session, index) => (
-              <ul key={index}>{session}</ul>
+              <ul key={index}>
+                {session}
+              </ul>
             ))}
           </ul>
         </div>
