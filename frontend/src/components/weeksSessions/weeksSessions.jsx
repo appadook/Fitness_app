@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
 import apis from '../../services/api'; // Import the api functions
 import './WeeksSessions.css';
 

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Home from './components/Home/home';
 import Workouts from './components/workouts/workouts';
-import Header from './components/header/header';
+// import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import WeekSessions from './components/weeksSessions/weeksSessions';
 import Exercises from './components/exercises/exercises';
