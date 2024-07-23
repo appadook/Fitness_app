@@ -34,9 +34,9 @@ const WeeksSessions = () => {
           <ul className="sessions-list">
             {data[week].map((session) => (
               <li key={session.session_id}>
-                {session.session_name}
-                <Link to={`/weeksSessions/${workoutId}/${session.session_id}`}>
-                  Click here to see exercises for {session.session_name}
+                {/* {session.session_name} */}
+                <Link to={`/weeksSessions/${workoutId}/${session.session_id}`} className='no-visited-link'>
+                  Click here to see exercises for {session.session_name} of week {week}
                 </Link>
               </li>
             ))}

@@ -11,3 +11,13 @@
 .week-section h2{
     color: white;
 }
+
+.no-visited-link:link {
+    color: inherit; /* inherit color from parent */
+    text-decoration: none; 
+  }
+  
+.no-visited-link:visited {
+color: inherit; /* ensure visited links retain the same color */
+text-decoration: none; 
+}

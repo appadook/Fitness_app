@@ -24,7 +24,7 @@ export const deleteSession = (sessionId) => api.delete(`/weeksSession/session/${
 export const deleteWk = (weekId) => api.delete(`/weeksSession/${weekId}`);
 
 // exercise requests
-export const getExercise = (exerciseId) => api.get(`/exercise/${exerciseId}`);
+export const getExercise = (sessionId) => api.get(`/exercise/${sessionId}`);
 
 const apis = {
   getWorkouts,
@@ -39,7 +39,8 @@ const apis = {
   createWkSess,
   updateWkSession,
   deleteSession,
-  deleteWk
+  deleteWk,
+  getExercise
 };
 
 export default apis;

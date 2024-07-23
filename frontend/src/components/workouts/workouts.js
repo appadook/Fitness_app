@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import apis from '../../services/api'; // Import the api functions
 import './workouts.css';
 
@@ -28,13 +27,13 @@ const Workouts = () => {
 
   return (
     <div className="workouts-container">
-      <h1>Workouts Page</h1>
+      <h1>Workout Program Dashboard</h1>
       {error && <p className="error">{error}</p>} {/* Display error message */}
       <ul className="workouts-list">
         {workouts.length > 0 ? (
           workouts.map((workout) => (
             <ul key={workout.id} className="workout-item">
-              <h2>{workout.exercise}</h2>
+              <h2>{workout.name}</h2>
               <p>{workout.purpose}</p>
               <Link to={`/weeksSessions/${workout.id}`} className="view-weeks-link">
                 View Weeks and Sessions
