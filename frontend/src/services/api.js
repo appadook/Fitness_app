@@ -23,6 +23,8 @@ export const updateWkSession = (weekId, weekSession) => api.put(`/weeksSessions/
 export const deleteSession = (sessionId) => api.delete(`/weeksSession/session/${sessionId}`);
 export const deleteWk = (weekId) => api.delete(`/weeksSession/${weekId}`);
 
+// exercise requests
+export const getExercise = (exerciseId) => api.get(`/exercise/${exerciseId}`);
 
 const apis = {
   getWorkouts,

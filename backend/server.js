@@ -6,7 +6,8 @@ const port = 3001;
 
 const workoutsRoutes = require('./routes/workouts');
 const personalRecordsRoutes = require('./routes/personalRecords');
-const weeksSessionsRoutes = require('./routes/weeksSessions')
+const weeksSessionsRoutes = require('./routes/weeksSessions');
+const exerciseDetails = require('./routes/exercise')
 
 // Use CORS middleware
 app.use(cors({
@@ -19,7 +20,8 @@ app.use(express.json());
 
 app.use('/api/workouts', workoutsRoutes);
 app.use('/api/personal-records', personalRecordsRoutes);
-app.use('/api/weeksSessions', weeksSessionsRoutes)
+app.use('/api/weeksSessions', weeksSessionsRoutes);
+app.use('/api/exercise', exerciseDetails);
 
 app.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)

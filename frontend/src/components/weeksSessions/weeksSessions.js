@@ -31,11 +31,14 @@ const WeeksSessions = () => {
       {Object.keys(data).map((week) => (
         <div key={week} className="week-section">
           <h2>Week {week}</h2>
-          <ul>
-            {data[week].map((session, index) => (
-              <ul key={index}>
-                {session}
-              </ul>
+          <ul className="sessions-list">
+            {data[week].map((session) => (
+              <li key={session.session_id}>
+                {session.session_name}
+                <Link to={`/weeksSessions/${workoutId}/${session.session_id}`}>
+                  Click here to see exercises for {session.session_name}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
