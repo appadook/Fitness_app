@@ -8,6 +8,7 @@ const api = axios.create({
 export const getWorkouts = () => api.get('/workouts');
 export const createWorkout = (workout) => api.post('/workouts', workout);
 export const updateWorkout = (id, workout) => api.put(`/workouts/${id}`, workout);
+export const toggleActiveWorkout = (id, active) => api.put(`/workouts/toggle-active/${id}`, { active }); //Testing toggle feature for active prop
 export const deleteWorkout = (id) => api.delete(`/workouts/${id}`);
 
 // PR requests
@@ -33,6 +34,7 @@ const apis = {
   getWorkouts,
   createWorkout,
   updateWorkout,
+  toggleActiveWorkout,
   deleteWorkout,
   getPr,
   createPR,

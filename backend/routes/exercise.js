@@ -130,6 +130,7 @@ router.put('/:session_id/:exercise_id', async (req, res) => {
     }
   });
 
+
   // DELETE route to delete an exercise and its details
 router.delete('/:session_id/:exercise_id', async (req, res) => {
     const exercise_id = req.params.exercise_id;

@@ -51,6 +51,32 @@ router.put('/:id', (req, res) => {
     });
   });
 
+   // PUT route to update the active status of a workout
+router.put('/toggle-active/:id', async (req, res) => {
+  const workoutId = req.params.id;
+  const { active } = req.body;
+
+  try {
+    const query = `
+      UPDATE workouts
+      SET active = $1
+      WHERE id = $2
+      RETURNING *;
+    `;
+    const values = [active, workoutId];
+    const result = await db.query(query, values);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Workout not found' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('Error updating active status', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
   
 // Delete a workout
 router.delete('/:id', (req, res) => {
