@@ -1,0 +1,89 @@
+.view-weeks-link:link {
+    color: blue; /* inherit color from parent */
+    text-decoration: none; 
+  }
+  
+  .view-weeks-link:visited {
+color: blue; /* ensure visited links retain the same color */
+text-decoration: none; 
+}
+
+/* General Styles */
+.workout-item {
+  background-color: #444a79; /* Dark Purple */
+  color: white;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  list-style: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.workout-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.workout-item h2 {
+  margin: 0;
+  font-size: 24px;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+}
+
+.workout-item p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.view-weeks-link {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #01030c; /* Dark Purple */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: transform 0.3s;
+  margin: 10px 10px ; /* Added space below the link */
+}
+
+.view-weeks-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  background-color: #ffffff;
+  color: #444a79; /* Dark Purple */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 10px 0 0;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  margin-top: 10px; /* Added space above the buttons */
+}
+
+button:hover {
+  background-color: #7f84aa; /* Dark Purple */ 
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.active-btn{
+
+}
+
+.delete-btn{
+  background-color: #ac4141; /* Dark Purple */ 
+
+  color: #ffffff;
+}
+
+.delete-btn:hover{
+  background-color: #ac4141;
+}

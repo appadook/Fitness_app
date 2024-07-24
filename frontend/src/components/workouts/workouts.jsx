@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import apis from '../../services/api'; // Import the api functions
 import WorkoutItem from './workoutItem';
-import AddWorkoutForm from './addWorkoutForm';
+import AddWorkoutModal from './addWorkoutModal';
 import './workouts.css';
 
 const Workouts = () => {
   const [workouts, setWorkouts] = useState([]);
   const [error, setError] = useState(null); // Add state to handle errors
+  const [isModalOpen, setIsModalOpen] = useState(false); // NEW CODE
+
 
   useEffect(() => {
     fetchWorkouts();
@@ -58,11 +60,19 @@ const Workouts = () => {
     } 
   }; 
 
+  const openModal = () => setIsModalOpen(true); // NEW CODE
+  const closeModal = () => setIsModalOpen(false); // NEW CODE
+
   return (
     <div className="workouts-container">
       <h1>Workout Program Dashboard</h1>
       {error && <p className="error">{error}</p>} {/* Display error message */}
-      <AddWorkoutForm onAdd={handleAddWorkout} />
+      <button onClick={openModal}>Add Workout</button> 
+      <AddWorkoutModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        onAdd={handleAddWorkout}
+      /> {/* NEW CODE */}
       <ul className="workouts-list">
         {workouts.length > 0 ? (
           workouts.map((workout) => (

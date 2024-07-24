@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './WorkoutItem.css'
 
 const WorkoutItem = ({ workout, onDelete, onToggleActive }) => {
   return (
@@ -11,11 +12,11 @@ const WorkoutItem = ({ workout, onDelete, onToggleActive }) => {
       </Link>
       {/* <span>{workout.active ? 'Active' : 'Inactive'}</span> */}
       {/*Toggle active button*/}
-      <button onClick={() => onToggleActive(workout.id, !workout.active)}> 
+      <button className='active-btn' onClick={() => onToggleActive(workout.id, !workout.active)}> 
         {workout.active ? 'Active' : 'Inactive'} 
       </button> 
 
-      <button onClick={() => onDelete(workout.id)}>Delete Workout</button>
+      <button className='delete-btn' onClick={() => onDelete(workout.id)}>Delete Workout</button>
     </ul>
   );
 };

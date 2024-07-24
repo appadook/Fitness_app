@@ -14,5 +14,6 @@
     "concurrently": "^6.0.0"
   },
   "dependencies": {
+    "react-modal": "^3.16.1"
   }
 }
