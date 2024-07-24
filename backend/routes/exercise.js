@@ -44,9 +44,11 @@ router.get('/:session_id', async (req, res) => {
 });
 
 // POST route to add a new exercise and its details
-router.post('/', async (req, res) => {
-    const { session_id, exercises } = req.body;
-  
+router.post('/:session_id', async (req, res) => {
+    // const { session_id, exercises } = req.body;
+    const {exercises} = req.body;
+    const session_id = req.params.session_id;
+
     try {
       await db.query('BEGIN'); // Begin transaction
   
