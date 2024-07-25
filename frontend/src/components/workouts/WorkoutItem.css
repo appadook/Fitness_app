@@ -10,15 +10,16 @@ text-decoration: none;
 
 /* General Styles */
 .workout-item {
-  background-color: #1f2552; /* Dark Purple */
+  background-color: rgb(31, 37, 82, 0.7); /* Dark Purple */
   color: white;
   padding: 20px;
-  margin: 15px 0;
+  margin: 15px 15px;
   border-radius: 10px;
   list-style: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   border: 1px solid white;
+  width: 80%;
 }
 
 .workout-item:hover {

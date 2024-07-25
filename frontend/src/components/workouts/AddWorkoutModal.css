@@ -32,3 +32,23 @@
     margin: 10px 0;
   }
   
+  .delete-btn{
+    background-color: #ac4141; 
+  
+    color: #ffffff;
+  }
+  
+  .delete-btn:hover{
+    background-color: #ac4141;
+  }
+
+  .submit-btn{
+    background-color: #409359;  
+  
+    color: #ffffff;
+  }
+  
+  .submit-btn:hover{
+    background-color: #409359;;
+    border: 1px solid white;
+  }

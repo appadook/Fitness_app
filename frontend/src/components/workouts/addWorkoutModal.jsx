@@ -49,7 +49,7 @@ const AddWorkoutModal = ({ isOpen, onRequestClose, onAdd }) => {
           required
         />
         <label>
-          Active:
+          Active
           <input
             type="checkbox"
             name="active"
@@ -57,8 +57,8 @@ const AddWorkoutModal = ({ isOpen, onRequestClose, onAdd }) => {
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit">Add Workout</button>
-        <button type="button" onClick={onRequestClose}>Cancel</button>
+        <button type="submit" className='submit-btn'>Add Workout</button>
+        <button type="button" className='delete-btn' onClick={onRequestClose}>Cancel</button>
       </form>
     </Modal>
   );

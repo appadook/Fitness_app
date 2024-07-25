@@ -9,8 +9,12 @@
   }
 
 .card-container {
-  display: grid;
+  /* border: 1px solid wheat; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  list-style: none;
   grid-template-columns: repeat(2, 1fr); /* Create two equal-width columns */
   gap: 20px; /* Space between the cards */
   flex-wrap: wrap;
@@ -26,6 +30,7 @@
   transition: transform 0.2s;
   height: 110px;
   width: 75%;
+  background-color: rgb(31, 37, 82, 0.5); /* Dark Purple */
 }
 
 .card:hover {

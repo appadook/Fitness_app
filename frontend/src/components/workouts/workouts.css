@@ -2,18 +2,23 @@
     color: white;
     margin: 5px;
     font-size: 40px;
+    padding: 0px 15px;
 
 }
 
-/*
+
 .workouts-list{
-    border: 1px solid white;
+    /* border: 1px solid red; */
     color: white;
-    margin: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    padding: 0; /* Remove default padding */
+    list-style: none; /* Remove default list styling */
 }
 
 .workout-item{
     border: 1px solid white;
-    color: white;
-    margin: 0px;
-} */
+}

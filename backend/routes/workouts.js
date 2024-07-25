@@ -81,8 +81,49 @@ router.put('/toggle-active/:id', async (req, res) => {
 // Delete a workout
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    const query = 'DELETE FROM workouts WHERE id = $1 RETURNING *';
-    const values = [id];
+
+      // Delete from exercise_details
+      const deleteExerciseDetailsQuery = `
+      DELETE FROM exercise_details
+      WHERE exercise_id IN (
+          SELECT e.id FROM exercises e
+          JOIN sessions s ON e.session_id = s.id
+          JOIN weeks w ON s.week_id = w.id
+          WHERE w.workout_id = $1
+      )
+  `;
+    db.query(deleteExerciseDetailsQuery, [id]);
+
+    // Delete from exercises
+    const deleteExercisesQuery = `
+        DELETE FROM exercises
+        WHERE session_id IN (
+            SELECT s.id FROM sessions s
+            JOIN weeks w ON s.week_id = w.id
+            WHERE w.workout_id = $1
+        )
+    `;
+    db.query(deleteExercisesQuery, [id]);
+
+    // Delete from sessions
+    const deleteSessionsQuery = `
+        DELETE FROM sessions
+        WHERE week_id IN (
+            SELECT w.id FROM weeks w
+            WHERE w.workout_id = $1
+        )
+    `;
+    db.query(deleteSessionsQuery, [id]);
+
+    // Delete from weeks
+    const deleteWeeksQuery = `
+        DELETE FROM weeks
+        WHERE workout_id = $1
+    `;
+    db.query(deleteWeeksQuery, [id]);
+
+      const query = 'DELETE FROM workouts WHERE id = $1 RETURNING *';
+      const values = [id];
   
     db.query(query, values, (err, result) => {
       if (err) {

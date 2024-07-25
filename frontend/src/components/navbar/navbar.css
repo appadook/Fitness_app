@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #444a79; /* Transparent background */
+  background-color: rgb(31, 37, 82, 0.7); /* Dark Purple */
   overflow: hidden;
   border-radius: 5px;
   border-color:white;
@@ -8,8 +8,11 @@
   top: 0; /* Ensure it stays at the top */
   width: 100%; /* Ensure it takes the full width */
   margin: 0; /* Reset margin */
+  margin-bottom: 20px;
   padding: 10px 0; /* Adjust padding as needed */
   z-index: 1000; /* Ensure it stays above other content */
+  height: 7.5vh;
+
 }
   
   .navbar-list {
@@ -21,6 +24,7 @@
     align-items: center; /* Align items vertically */
     width: 100%;
     padding: 0 10px;
+    height: 100%;
   }
   
   .navbar-item {
@@ -28,7 +32,8 @@
     padding: 14px; /* Adjusted padding for uniformity */
     text-align: center; /* Center text within each item */
     position: relative;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: bolder;
   }
   
   .navbar-item:not(:last-child)::after {
@@ -39,7 +44,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    height: 75%; /* Increase height to take up most of the navbar's height */
+    height: 100%; /* Increase height to take up most of the navbar's height */
     width: 1px; /* Make the pipe thinner */
     background-color: white; /* Pipe color */
   }

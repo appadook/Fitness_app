@@ -25,19 +25,19 @@ const WeeksSessions = () => {
 
   return (
     <div className="weeks-sessions-container">
-      <h1>Weeks and Sessions for Workout {workoutId}</h1>
+      <h1>Program Breakdown</h1>
       {error && <p>{error}</p>}
       {Object.keys(data).map((week) => (
         <div key={week} className="week-section">
           <h2>Week {week}</h2>
           <ul className="sessions-list">
             {data[week].map((session) => (
-              <li key={session.session_id}>
+              <ul key={session.session_id}>
                 {/* {session.session_name} */}
                 <Link to={`/weeksSessions/${workoutId}/${session.session_id}`} className='no-visited-link'>
                   Click here to see exercises for {session.session_name} of week {week}
                 </Link>
-              </li>
+              </ul>
             ))}
           </ul>
         </div>
