@@ -21,8 +21,8 @@ export const deletePR = (id) => api.delete(`/personal-records/${id}`);
 export const getWkSess = (weekId) => api.get(`/weeksSessions/${weekId}`);
 export const createWkSess = (weekSession) => api.post(`/weeksSessions`, weekSession);
 export const updateWkSession = (weekId, weekSession) => api.put(`/weeksSessions/${weekId}`, weekSession);
-export const deleteSession = (sessionId) => api.delete(`/weeksSession/session/${sessionId}`);
-export const deleteWk = (weekId) => api.delete(`/weeksSession/${weekId}`);
+export const deleteSession = (sessionId) => api.delete(`/weeksSessions/session/${sessionId}`);
+export const deleteWk = (weekId) => api.delete(`/weeksSessions/${weekId}`);
 
 // exercise requests
 export const getExercise = (sessionId) => api.get(`/exercise/${sessionId}`);

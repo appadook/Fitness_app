@@ -10,6 +10,7 @@ router.get('/:workoutId', async (req, res) => {
       const query = `
         SELECT 
             wk.week_number,
+            wk.id as week_id,
             s.session_name,
             s.id AS session_id
         FROM 
@@ -19,19 +20,23 @@ router.get('/:workoutId', async (req, res) => {
         WHERE 
             wk.workout_id = $1
         ORDER BY 
-            wk.week_number, s.session_name;
+            s.week_id, wk.week_number, s.session_name;
       `;
       const values = [workoutId];
   
       const result = await db.query(query, values);
       const groupedData = result.rows.reduce((acc, row) => {
-        const { week_number, session_name, session_id } = row;
+        const { week_id, week_number, session_name, session_id } = row;
         if (!acc[week_number]) {
-          acc[week_number] = [];
+          acc[week_number] = {
+            week_id: week_id,
+            sessions: []
+          };
         }
-        acc[week_number].push({session_name, session_id});
+        acc[week_number].sessions.push({ session_name, session_id });
         return acc;
       }, {});
+      
       
       res.json(groupedData);
     } catch (err) {
