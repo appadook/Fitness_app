@@ -28,6 +28,7 @@ const WeekItem = ({ weekNumber, weekId, onDeleteWeek, onDeleteSession, workoutId
     <div className="week-section">
       <h2>Week {weekNumber}</h2>
       <button onClick={() => onDeleteWeek(weekId)}>Delete Week</button>
+      <button onClick={() => onAddSession(weekId)}>Add Session</button>
       {data.length > 0 ? (
         <ul className="sessions-list">
         {data.map((session) => (

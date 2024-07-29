@@ -46,7 +46,7 @@ const db = require('../db');
 //     }
 //   });
 
-
+ // ROUTE GET all weeks for a specific workout
 router.get('/:workoutId', async (req, res) => {
     const workoutId = req.params.workoutId;
     
@@ -106,7 +106,7 @@ router.get('/:workoutId/:weekId', async (req, res) => {
 
 
   
-  // // POST route to add a new week and a new session
+  // POST route to add a new week 
   // router.post('/', async (req, res) => {
   //   const { workout_id, week_number, session_name } = req.body;
   
@@ -137,6 +137,7 @@ router.get('/:workoutId/:weekId', async (req, res) => {
 
 
   // POST route to add a new week
+  
   router.post('/', async (req, res) => {
     // const { workout_id } = req.params;
     const { week_number, workout_id } = req.body;
@@ -161,6 +162,29 @@ router.get('/:workoutId/:weekId', async (req, res) => {
     } 
   });
 
+   // POST ROUTE to add a new Session
+  router.post('/:weekId', async (req, res) => {
+    const { weekId } = req.params;
+    const { session_name } = req.body;
+  
+    try {
+      await db.query('BEGIN');
+  
+      const insertSessionQuery = 'INSERT INTO sessions (session_name, week_id) VALUES ($1, $2) RETURNING *';
+      const sessionValues = [session_name, weekId];
+      const sessionResult = await db.query(insertSessionQuery, sessionValues);
+
+      await db.query('COMMIT');
+  
+      res.status(201).json({
+        session: sessionResult.rows[0]
+      });
+    } catch (err) {
+      await db.query('ROLLBACK');
+      console.error('Error creating new session', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } 
+  });
 
   // PUT route to update a week and its session
 router.put('/:weekId', async (req, res) => {

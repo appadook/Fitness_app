@@ -47,6 +47,8 @@ const WeeksSessions = () => {
     }
   };
 
+
+
   const handleDeleteWeek = async (weekId) => {
     try{
       await apis.deleteWk(weekId);
