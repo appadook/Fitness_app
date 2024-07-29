@@ -5,7 +5,7 @@ import AddWeekForm from './addWeekForm';
 
 Modal.setAppElement('#root'); // Important for accessibility
 
-const AddWeekModal = ({ isOpen, onRequestClose, onAdd }) => {
+const AddWeekModal = ({ isOpen, onRequestClose, onAdd, workoutId }) => {
     return (
       <Modal
         isOpen={isOpen}
@@ -15,7 +15,7 @@ const AddWeekModal = ({ isOpen, onRequestClose, onAdd }) => {
         overlayClassName="overlay"
       >
         <h2>Add Week</h2>
-        <AddWeekForm onAdd={onAdd} onRequestClose={onRequestClose} />
+        <AddWeekForm onAdd={onAdd} onRequestClose={onRequestClose} workoutId={workoutId} />
       </Modal>
     );
   };

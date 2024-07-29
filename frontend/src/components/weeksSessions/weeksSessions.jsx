@@ -17,9 +17,9 @@ const WeeksSessions = () => {
 
   const fetchWeeksAndSessions = async () => {
     try {
-    //   const response = await axios.get(`http://localhost:3001/weeksSessions/${workoutId}`);
-    const response = await apis.getWkSess(workoutId);
+      const response = await apis.getWeeks(workoutId);
       setData(response.data);
+
     } catch (error) {
       console.error('Error fetching weeks and sessions data', error);
       setError('Failed to fetch data');
@@ -28,8 +28,19 @@ const WeeksSessions = () => {
 
   const handleAddWeek = async (newWeek) => {
     try {
-      const response = await apis.createWkSess(newWeek);
-      setData([...data, response.data]);
+      const response = await apis.createWeek(newWeek);
+      fetchWeeksAndSessions();
+      const newWeekData = response.data.week;
+
+      
+      // Update the state with the new week data
+      setData(prevData => ({
+        ...prevData,
+        [newWeekData.week_number]: {
+          week_id: newWeekData.id,
+          sessions: []
+        }
+      }));
     } catch (error) {
       console.error('Error adding week', error);
       setError('Failed to add week');
@@ -57,8 +68,8 @@ const WeeksSessions = () => {
     }
   };
 
-  const openModal = () => setIsModalOpen(true); // NEW CODE
-  const closeModal = () => setIsModalOpen(false); // NEW CODE
+  const openModal = () => setIsModalOpen(true); 
+  const closeModal = () => setIsModalOpen(false);
 
 
   return (
@@ -70,9 +81,21 @@ const WeeksSessions = () => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         onAdd={handleAddWeek}
+        workoutId={workoutId}
       /> 
-      {/* {console.log(data)} */}
-      {Object.keys(data).map((week) => (
+
+      {data.rows && data.rows.map((item) => (
+        <WeekItem
+          key={item.week_number}
+          weekNumber={item.week_number}
+          weekId={item.week_id}
+          onDeleteWeek={handleDeleteWeek}
+          onDeleteSession={handleDeleteSession}
+          workoutId={item.workoutId}
+        />
+      ))}
+     
+      {/* {Object.keys(data.rows).map((week) => (
        <WeekItem 
         key={week}
         weekNumber={week}
@@ -82,7 +105,7 @@ const WeeksSessions = () => {
         onDeleteSession={handleDeleteSession}
         workoutId={workoutId}
      />
-      ))}
+      ))} */}
     </div>
   );
 };

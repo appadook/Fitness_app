@@ -3,74 +3,160 @@ const router = express.Router();
 const db = require('../db');
 
 
+// router.get('/:workoutId', async (req, res) => {
+//     const workoutId = req.params.workoutId;
+    
+//     try {
+//       const query = `
+//         SELECT 
+//             wk.week_number,
+//             wk.id as week_id,
+//             s.session_name,
+//             s.id AS session_id
+//         FROM 
+//             weeks wk
+//         JOIN 
+//             sessions s ON wk.id = s.week_id
+//         WHERE 
+//             wk.workout_id = $1
+//         ORDER BY 
+//             s.week_id, wk.week_number, s.session_name;
+//       `;
+//       const values = [workoutId];
+  
+//       const result = await db.query(query, values);
+//       console.log(result);
+//       const groupedData = result.rows.reduce((acc, row) => {
+//         const { week_id, week_number, session_name, session_id } = row;
+//         if (!acc[week_number]) {
+//           acc[week_number] = {
+//             week_id: week_id,
+//             sessions: []
+//           };
+//         }
+//         acc[week_number].sessions.push({ session_name, session_id });
+//         return acc;
+//       }, {});
+      
+      
+//       res.json(groupedData);
+//     } catch (err) {
+//       console.error('Error executing query', err);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//   });
+
+
 router.get('/:workoutId', async (req, res) => {
     const workoutId = req.params.workoutId;
     
     try {
       const query = `
         SELECT 
-            wk.week_number,
-            wk.id as week_id,
-            s.session_name,
-            s.id AS session_id
+            week_number,
+            workout_id,
+            id as week_id
         FROM 
-            weeks wk
-        JOIN 
-            sessions s ON wk.id = s.week_id
+            weeks 
+       
         WHERE 
-            wk.workout_id = $1
-        ORDER BY 
-            s.week_id, wk.week_number, s.session_name;
+            workout_id = $1;
       `;
       const values = [workoutId];
   
       const result = await db.query(query, values);
-      const groupedData = result.rows.reduce((acc, row) => {
-        const { week_id, week_number, session_name, session_id } = row;
-        if (!acc[week_number]) {
-          acc[week_number] = {
-            week_id: week_id,
-            sessions: []
-          };
-        }
-        acc[week_number].sessions.push({ session_name, session_id });
-        return acc;
-      }, {});
+      console.log(result);
+      res.json(result);
       
-      
-      res.json(groupedData);
     } catch (err) {
       console.error('Error executing query', err);
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
 
+//GET ROUTE to get all sessions for particular week
+router.get('/:workoutId/:weekId', async (req, res) => {
+  const workoutId = req.params.workoutId;
+  const weekId = req.params.weekId;
   
-  // POST route to add a new week and a new session
+  try {
+    const query = `
+      SELECT 
+          week_id,
+          session_name,
+          id as session_id
+      FROM 
+          sessions 
+      
+      WHERE 
+          week_id = $1;
+      
+    `;
+    const values = [weekId];
+
+    const result = await db.query(query, values);
+    console.log(result);
+    res.json(result);
+    
+  } catch (err) {
+    console.error('Error executing query', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+  
+  // // POST route to add a new week and a new session
+  // router.post('/', async (req, res) => {
+  //   const { workout_id, week_number, session_name } = req.body;
+  
+  //   try {
+  //     await db.query('BEGIN');
+  
+  //     const insertWeekQuery = 'INSERT INTO weeks (workout_id, week_number) VALUES ($1, $2) RETURNING *';
+  //     const weekValues = [workout_id, week_number];
+  //     const weekResult = await db.query(insertWeekQuery, weekValues);
+  //     const weekId = weekResult.rows[0].id;
+  
+  //     const insertSessionQuery = 'INSERT INTO sessions (week_id, session_name) VALUES ($1, $2) RETURNING *';
+  //     const sessionValues = [weekId, session_name];
+  //     const sessionResult = await db.query(insertSessionQuery, sessionValues);
+  
+  //     await db.query('COMMIT');
+  
+  //     res.status(201).json({
+  //       week: weekResult.rows[0],
+  //       session: sessionResult.rows[0]
+  //     });
+  //   } catch (err) {
+  //     await db.query('ROLLBACK');
+  //     console.error('Error creating new week and session', err);
+  //     res.status(500).json({ error: 'Internal Server Error' });
+  //   } 
+  // });
+
+
+  // POST route to add a new week
   router.post('/', async (req, res) => {
-    const { workout_id, week_number, session_name } = req.body;
+    // const { workout_id } = req.params;
+    const { week_number, workout_id } = req.body;
   
     try {
       await db.query('BEGIN');
   
       const insertWeekQuery = 'INSERT INTO weeks (workout_id, week_number) VALUES ($1, $2) RETURNING *';
-      const weekValues = [workout_id, week_number];
+      const weekValues = [parseInt(workout_id), parseInt(week_number)];
       const weekResult = await db.query(insertWeekQuery, weekValues);
-      const weekId = weekResult.rows[0].id;
-  
-      const insertSessionQuery = 'INSERT INTO sessions (week_id, session_name) VALUES ($1, $2) RETURNING *';
-      const sessionValues = [weekId, session_name];
-      const sessionResult = await db.query(insertSessionQuery, sessionValues);
-  
+
       await db.query('COMMIT');
   
       res.status(201).json({
-        week: weekResult.rows[0],
-        session: sessionResult.rows[0]
+        week: weekResult.rows[0]
+        // session: sessionResult.rows[0]
       });
     } catch (err) {
       await db.query('ROLLBACK');
-      console.error('Error creating new week and session', err);
+      console.error('Error creating new week', err);
       res.status(500).json({ error: 'Internal Server Error' });
     } 
   });

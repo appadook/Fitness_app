@@ -19,7 +19,10 @@ export const deletePR = (id) => api.delete(`/personal-records/${id}`);
 
 //weeksSessions requests
 export const getWkSess = (weekId) => api.get(`/weeksSessions/${weekId}`);
+export const getWeeks = (workoutId) => api.get(`/weeksSessions/${workoutId}`);
+export const getSessions = (workoutId,weekId) => api.get(`/weeksSessions/${workoutId}/${weekId}`);
 export const createWkSess = (weekSession) => api.post(`/weeksSessions`, weekSession);
+export const createWeek = (week) => api.post(`/weeksSessions/`, week);
 export const updateWkSession = (weekId, weekSession) => api.put(`/weeksSessions/${weekId}`, weekSession);
 export const deleteSession = (sessionId) => api.delete(`/weeksSessions/session/${sessionId}`);
 export const deleteWk = (weekId) => api.delete(`/weeksSessions/${weekId}`);
@@ -41,7 +44,10 @@ const apis = {
   updatePR,
   deletePR,
   getWkSess,
+  getWeeks,
+  getSessions,
   createWkSess,
+  createWeek,
   updateWkSession,
   deleteSession,
   deleteWk,

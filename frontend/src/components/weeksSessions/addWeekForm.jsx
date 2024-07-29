@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 
-const AddWeekForm = ({ onAdd, onRequestClose }) => {
-  const [newWeek, setNewWeek] = useState({ week_number: '', workout_id: '' });
+const AddWeekForm = ({ onAdd, onRequestClose , workoutId}) => {
+  const [newWeek, setNewWeek] = useState({ week_number: '', workout_id: parseInt(workoutId) });
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setNewWeek({
       ...newWeek,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: value
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onAdd(newWeek);
-    setNewWeek({ week_number: '', workout_id: '' });
+    setNewWeek({ week_number: '', workout_id: workoutId});
     onRequestClose(); // Close the modal after adding the workout
   };
 
