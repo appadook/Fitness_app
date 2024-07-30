@@ -1,0 +1,37 @@
+.session-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(68, 74, 121, 0.1); */
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+  }
+  
+  .no-visited-link {
+    text-decoration: none;
+    color: #444a79;
+    transition: color 0.2s, transform 0.2s;
+  }
+  
+  .no-visited-link:hover {
+    color: #33375a;
+    transform: scale(1.05);
+  }
+  
+  .session-item button {
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  .session-item button:hover {
+    background-color: #e63e3e;
+    transform: scale(1.05);
+  }
+  

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import apis from '../../services/api'; // Import the api functions
 import './WeeksSessions.css';
-import WeekItem from './weekItem';
-import AddWeekModal from './addWeekModal';
+import WeekItem from './weeks/weekItem';
+import AddWeekModal from './weeks/addWeekModal';
 
 const WeeksSessions = () => {
   const { workoutId } = useParams(); // Get the workoutId from the URL
@@ -14,6 +14,7 @@ const WeeksSessions = () => {
   useEffect(() => {
     fetchWeeksAndSessions();
   }, [workoutId]); // Re-fetch data when workoutId changes
+
 
   const fetchWeeksAndSessions = async () => {
     try {
@@ -59,16 +60,15 @@ const WeeksSessions = () => {
     }
   };
 
-  const handleDeleteSession = async(sessionId) => {
-    try{
-      await apis.deleteSession(sessionId);
-      console.log(sessionId);
-      fetchWeeksAndSessions();
-    }catch (error) {
-      console.error('Error deleting session', error);
-      setError('Failed to delete session');
-    }
-  };
+  // const handleDeleteSession = async(sessionId) => {
+  //   try{
+  //     await apis.deleteSession(sessionId);
+  //     fetchWeeksAndSessions();
+  //   }catch (error) {
+  //     console.error('Error deleting session', error);
+  //     setError('Failed to delete session');
+  //   }
+  // };
 
   const openModal = () => setIsModalOpen(true); 
   const closeModal = () => setIsModalOpen(false);
@@ -92,22 +92,10 @@ const WeeksSessions = () => {
           weekNumber={item.week_number}
           weekId={item.week_id}
           onDeleteWeek={handleDeleteWeek}
-          onDeleteSession={handleDeleteSession}
+          // onDeleteSession={handleDeleteSession}
           workoutId={item.workoutId}
         />
       ))}
-     
-      {/* {Object.keys(data.rows).map((week) => (
-       <WeekItem 
-        key={week}
-        weekNumber={week}
-        weekId={data[week].week_id}
-        sessions={data[week].sessions}
-        onDeleteWeek={handleDeleteWeek}
-        onDeleteSession={handleDeleteSession}
-        workoutId={workoutId}
-     />
-      ))} */}
     </div>
   );
 };
