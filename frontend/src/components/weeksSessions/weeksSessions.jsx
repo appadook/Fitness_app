@@ -60,15 +60,6 @@ const WeeksSessions = () => {
     }
   };
 
-  // const handleDeleteSession = async(sessionId) => {
-  //   try{
-  //     await apis.deleteSession(sessionId);
-  //     fetchWeeksAndSessions();
-  //   }catch (error) {
-  //     console.error('Error deleting session', error);
-  //     setError('Failed to delete session');
-  //   }
-  // };
 
   const openModal = () => setIsModalOpen(true); 
   const closeModal = () => setIsModalOpen(false);

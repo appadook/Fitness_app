@@ -6,7 +6,7 @@ const tableName = 'personal_records';
 
 // Get all PRs
 router.get('/', (req, res) => {
-    db.query('SELECT * FROM personal_records', (err, results) => {
+    db.query('SELECT * FROM personal_records ORDER BY id ASC', (err, results) => {
       if (err) {
         res.status(500).send('Error retrieving data');
         return;

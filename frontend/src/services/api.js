@@ -14,7 +14,7 @@ export const deleteWorkout = (id) => api.delete(`/workouts/${id}`);
 // PR requests
 export const getPr = () => api.get('/personal-records');
 export const createPR = (pr) => api.post('/personal-records', pr);
-export const updatePR = (id, pr) => api.put(`/personal_records/${id}`, pr);
+export const updatePR = (id, pr) => api.put(`/personal-records/${id}`, pr);
 export const deletePR = (id) => api.delete(`/personal-records/${id}`);
 
 //weeksSessions requests

@@ -7,7 +7,7 @@ import Workouts from './components/workouts/workouts';
 import Footer from './components/footer/footer';
 import WeekSessions from './components/weeksSessions/weeksSessions';
 import Exercises from './components/exercises/exercises';
-// import PersonalRecords from './components/PersonalRecords/PersonalRecords';
+import PersonalRecords from './components/personalRecords/personalRecords';
 // import LogWorkout from './components/LogWorkout/LogWorkout';
 import './App.css';
 
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/workouts" element={<Workouts />} />
           <Route path="/weeksSessions/:workoutId" element={< WeekSessions/>} />
           <Route path='/weeksSessions/:workoutId/:sessionId/' element={<Exercises/>} />
-          {/* <Route path="/personal-records" element={<PersonalRecords />} /> */}
+          <Route path="/personal-records" element={<PersonalRecords/>} />
           {/* <Route path="/log-workout" element={<LogWorkout />} /> */}
         </Routes>
         </div>

@@ -1,15 +1,15 @@
 .week-section {
-    background-color: rgba(182, 106, 45, 0.2); /* Slightly transparent background */
+    background-color: rgba(43, 98, 181, 0.5); /* Slightly transparent background */
     border-radius: 10px;
     border: 2px solid white;
     padding: 20px;
-    margin: 10px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 40px ;
+    margin: 20px 20% ;
   }
+
   
   .week-section h2 {
-    color: #bdbec9;
+    color: #edeef5;
     margin-bottom: 10px;
   }
 
@@ -28,40 +28,14 @@
     transform: scale(1.05);
   }
   
-  /* .week-section button {
-    background-color: #444a79;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-  }
-  
-  .week-section button:hover {
-    background-color: #33375a;
-    transform: scale(1.05);
-  } */
-  
-  .sessions-list {
+.sessions-list {
     list-style: none;
     padding: 0;
-  }
+    }
 
   
-  .no-visited-link {
-    text-decoration: none;
-    color: #444a79;
-    transition: color 0.2s, transform 0.2s;
-  }
   
-  .no-visited-link:hover {
-    color: #33375a;
-    transform: scale(1.05);
-  }
-  
-  .sessions-list .session-item button {
+  /* .sessions-list .session-item button {
     background-color: #ff4b4b;
     color: white;
     border: none;
@@ -75,4 +49,4 @@
     background-color: #e63e3e;
     transform: scale(1.05);
   }
-  
+   */

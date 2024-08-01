@@ -9,14 +9,16 @@
     display: flex;
   }
   
-  .no-visited-link {
+  .session-name {
     text-decoration: none;
-    color: #444a79;
+    color: #aea5a5;
     transition: color 0.2s, transform 0.2s;
+    font-size: large;
+    margin-right: 5%;
   }
   
-  .no-visited-link:hover {
-    color: #33375a;
+  .session-name:hover {
+    color: #f7f7fa;
     transform: scale(1.05);
   }
   
