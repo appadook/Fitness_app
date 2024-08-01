@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import apis from '../../services/api';
+import AddPrModal from './AddPrModal';
 import './PersonalRecords.css';
+
 
 const PersonalRecords = () => {
   const [data, setData] = useState([]); // Stores fetched personal records
   const [editData, setEditData] = useState({}); // Stores current editable fields
   const [error, setError] = useState(null); // Stores error messages
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetchPersonalRecords();
@@ -51,9 +54,41 @@ const PersonalRecords = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await apis.deletePR(id);
+      setData(prevData => prevData.filter(pr => pr.id !== id));
+      fetchPersonalRecords();
+    } catch (error) {
+      console.error('Error deleting PR', error);
+      setError('Failed to delete PR');
+    }
+  };
+
+  const handleAddPr = async (newPr) => {
+    try {
+      const response = await apis.createPR(newPr);
+      setData((prevData) => [...prevData, response.data]);
+      fetchPersonalRecords();
+    } catch (error) {
+      console.error('Error adding personal record', error);
+      setError('Failed to add personal record');
+    }
+  };
+
+  const openModal = () => setIsModalOpen(true); 
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <div className="personal-records-container">
+    <div className="personal-records-page">
       <h1>Personal Records Page</h1>
+      <button className='new-pr-btn' onClick={openModal}>New PR</button>
+      <AddPrModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        onAdd={handleAddPr}
+      />
+      <div className="personal-records-container">
       {error && <p className="error">{error}</p>}
       {Array.isArray(data) && data.length > 0 ? (
         data.map((record) => (
@@ -63,13 +98,17 @@ const PersonalRecords = () => {
               type="number"
               value={editData[record.id]?.weight || record.weight}
               onChange={(e) => handleInputChange(record.id, 'weight', e.target.value)}
+              
             />
             <button onClick={() => handleSave(record.id, record.exercise)}>Save</button>
+            <button onClick={() => handleDelete(record.id)}>Delete</button>
           </div>
         ))
       ) : (
         <p>No personal records found.</p>
       )}
+      </div>
+      
     </div>
   );
 };
