@@ -1,0 +1,70 @@
+.weeks-sessions-container {
+  padding: 20px;
+}
+
+.session-exercises {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Reduced gap between exercise items */
+  color: black;
+  margin: 50px;
+}
+
+.exercise-item {
+  border: 1px solid #ccc;
+  padding: 10px; /* Reduced padding */
+  margin-bottom: 5px; /* Reduced margin */
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 14px; /* Smaller font size */
+}
+
+.exercise-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px; /* Reduced margin */
+}
+
+.exercise-table th,
+.exercise-table td {
+  border: 1px solid #ddd;
+  padding: 6px; /* Reduced padding */
+  text-align: center;
+  font-size: 14px; /* Smaller font size */
+}
+
+.exercise-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.set-item input {
+  width: 50px; /* Smaller width for input fields */
+}
+
+button {
+  padding: 5px 8px; /* Reduced padding */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px; /* Smaller font size */
+}
+
+button.save-btn {
+  background-color: green;
+  color: white;
+  margin-right: 5px;
+}
+
+button.save-btn:hover {
+  background-color: darkgreen;
+}
+
+button.delete-btn {
+  background-color: red;
+  color: white;
+}
+
+button.delete-btn:hover {
+  background-color: darkred;
+}

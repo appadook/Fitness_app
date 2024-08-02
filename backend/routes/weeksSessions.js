@@ -104,7 +104,6 @@ router.get('/:workoutId/:weekId', async (req, res) => {
   }
 });
 
-
   
   // POST route to add a new week 
   // router.post('/', async (req, res) => {
