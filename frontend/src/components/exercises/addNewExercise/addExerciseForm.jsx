@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const AddExerciseForm = ({ onAdd, onRequestClose }) => {
+const AddExerciseForm = ({ onAdd, onRequestClose, sessionId }) => {
   const [newExercise, setnewExercise] = useState({ exercise_name: ''});
 
   const handleInputChange = (e) => {
@@ -14,7 +14,7 @@ const AddExerciseForm = ({ onAdd, onRequestClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd();
+    onAdd(sessionId, newExercise);
     setnewExercise({});
     onRequestClose(); // Close the modal after adding the workout
   };
@@ -22,29 +22,11 @@ const AddExerciseForm = ({ onAdd, onRequestClose }) => {
   return (
     <form onSubmit={handleSubmit} className="add-exercise-form">
       <input
-        type="number"
-        name="set_number"
-        value={newExercise.set_number}
+        type="text"
+        name="exercise_name"
+        value={newExercise.exercise_name}
         onChange={handleInputChange}
-        placeholder="Set #"
-        required
-      />
-      
-      <input
-        type="number"
-        name="reps"
-        value={newExercise.reps}
-        onChange={handleInputChange}
-        placeholder="reps"
-        required
-      />
-      
-      <input
-        type="number"
-        name="weight"
-        value={newExercise.weight}
-        onChange={handleInputChange}
-        placeholder="Weight"
+        placeholder="New Exercise"
         required
       />
       <button type="submit" className="submit-btn">Add Exercise</button>

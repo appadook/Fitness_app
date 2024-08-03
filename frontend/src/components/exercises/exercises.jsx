@@ -64,9 +64,9 @@ const Exercises = () => {
     }
   }
 
-  const handleAddExercise = async () => {
+  const handleAddExercise = async (sessionId, newExercise) => {
     try{
-      await apis.createNewSet();
+      await apis.createNewExercise(sessionId, newExercise);
       fetchExercisesAndDetails();
     }catch (error) {
       console.error('Error adding new Exercise', error);
@@ -107,6 +107,7 @@ const Exercises = () => {
           isOpen={isModalOpen}
           onRequestClose={closeModal}
           onAdd={handleAddExercise}
+          sessionId = {sessionId}
       />
       <div className="session-exercises">
         {Object.entries(data).map(([exercise, details]) => (

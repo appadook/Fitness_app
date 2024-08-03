@@ -5,7 +5,7 @@ import AddExerciseForm from './addExerciseForm';
 
 Modal.setAppElement('#root'); // Important for accessibility
 
-const AddExerciseModal = ({ isOpen, onRequestClose, onAdd }) => {
+const AddExerciseModal = ({ isOpen, onRequestClose, onAdd, sessionId }) => {
     return (
       <Modal
         isOpen={isOpen}
@@ -18,6 +18,7 @@ const AddExerciseModal = ({ isOpen, onRequestClose, onAdd }) => {
         <AddExerciseForm
         onAdd = {onAdd}
         onRequestClose = {onRequestClose}
+        sessionId = {sessionId}
         />
       </Modal>
     );

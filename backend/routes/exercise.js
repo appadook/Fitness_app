@@ -5,8 +5,78 @@ const db = require('../db');
 
 
 // GET route to fetch data on exercises and tthe sets that go with it
+// router.get('/:session_id', async (req, res) => {
+//     const session_id = req.params.session_id;
+
+//     try {
+//         const query = `
+//         SELECT 
+//             e.exercise_name,
+//             ed.set_number,
+//             ed.reps,
+//             ed.weight,
+//             ed.id as set_id,
+//             ed.exercise_id
+//         FROM
+// 	        exercises e
+//         JOIN
+//             exercise_details ed on e.id = ed.exercise_id
+//         WHERE
+//         e.session_id = $1
+//         `;
+//         const values =[session_id];
+//         const result = await db.query(query, values);
+//         const groupedData = result.rows.reduce((acc, row) => {
+//             const { exercise_name, set_number, reps, weight, set_id, exercise_id } = row;
+//             if (!acc[exercise_name]) {
+//                 acc[exercise_name] = {
+//                   sets: [],
+//                   exercise_id: exercise_id
+//                 };
+//               }
+//             acc[exercise_name].sets.push({ set_id, set_number, reps, weight });
+//             return acc;
+//         }, {});
+        
+//         res.json(groupedData);
+//         } catch (err) {
+//         console.error('Error executing query', err);
+//         res.status(500).json({ error: 'Internal Server Error' });
+        
+//     }
+// });
+
+
 router.get('/:session_id', async (req, res) => {
-    const session_id = req.params.session_id;
+  const session_id = req.params.session_id;
+
+  try {
+      const query = `
+      SELECT 
+          exercise_name,
+          id as exercise_id
+      FROM
+        exercises 
+      
+      WHERE
+        session_id = $1
+      `;
+      const values =[session_id];
+      const result = await db.query(query, values);
+      data = result.rows;
+
+      bigdata = {};
+
+      data.forEach((exercise) => {
+        bigdata[exercise.exercise_name] = {
+          sets : [],
+          exercise_id : exercise.exercise_id
+        }
+      });
+    } catch (err) {
+      console.error('Error executing query', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      }
 
     try {
         const query = `
@@ -18,7 +88,7 @@ router.get('/:session_id', async (req, res) => {
             ed.id as set_id,
             ed.exercise_id
         FROM
-	        exercises e
+          exercises e
         JOIN
             exercise_details ed on e.id = ed.exercise_id
         WHERE
@@ -26,25 +96,22 @@ router.get('/:session_id', async (req, res) => {
         `;
         const values =[session_id];
         const result = await db.query(query, values);
-        const groupedData = result.rows.reduce((acc, row) => {
-            const { exercise_name, set_number, reps, weight, set_id, exercise_id } = row;
-            if (!acc[exercise_name]) {
-                acc[exercise_name] = {
-                  sets: [],
-                  exercise_id: exercise_id
-                };
-              }
-            acc[exercise_name].sets.push({ set_id, set_number, reps, weight });
-            return acc;
-        }, {});
+        const fulldata = result.rows;
+        fulldata.forEach((item => {
+          const { exercise_name, set_number, reps, weight, set_id} = item;
+          bigdata[exercise_name].sets.push({set_id, set_number, reps, weight})
+        }))
         
-        res.json(groupedData);
-        } catch (err) {
-        console.error('Error executing query', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-        
-    }
-});
+      res.json(bigdata);
+      } catch (err) {
+      console.error('Error executing query', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      }
+  }
+);
+
+
+
 
 // POST route to add a new exercise and its details
 // router.post('/:session_id', async (req, res) => {
@@ -91,6 +158,7 @@ router.get('/:session_id', async (req, res) => {
 //     }
 //   });
 
+// POST route to add a new exercise
 router.post('/:session_id', async (req, res) => {
   const { session_id } = req.params; 
   const { exercise_name } = req.body; 

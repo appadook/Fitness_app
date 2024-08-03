@@ -30,7 +30,7 @@ export const deleteWk = (weekId, session) => api.delete(`/weeksSessions/${weekId
 
 // exercise requests
 export const getExercise = (sessionId) => api.get(`/exercise/${sessionId}`);
-export const createNewExerciseAndDetails = (sessionId) => api.post(`/exercise/${sessionId}`);
+export const createNewExercise = (sessionId, newExercise) => api.post(`/exercise/${sessionId}`, newExercise);
 export const createNewSet = (sessionId, exerciseId, newSet) => api.post(`/exercise/${sessionId}/${exerciseId}`, newSet);
 export const updateExerciseAndDetais = (sessionId, exerciseId) => api.put(`/exercise/${sessionId}/${exerciseId}`);
 export const deleteExerciseAndDetails = (sessionId, exerciseId) => api.delete(`/exercise/${sessionId}/${exerciseId}`);
@@ -56,7 +56,7 @@ const apis = {
   deleteSession,
   deleteWk,
   getExercise,
-  createNewExerciseAndDetails,
+  createNewExercise,
   createNewSet,
   updateExerciseAndDetais,
   deleteExerciseAndDetails,
