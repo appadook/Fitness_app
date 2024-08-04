@@ -3,7 +3,10 @@ import AddSetModal from './addNewSet/addSetModal';
 
 
 
-const ExerciseItem = ({ exercise, details, onDeleteSet, onDeleteExercise, sessionId, exerciseId, onAddSet }) => {
+const ExerciseItem = ({ exercise, details, onDeleteSet, onDeleteExercise, sessionId, exerciseId, onAddSet
+   , handleInputChange
+   , handleSaveExercise
+  }) => {
     
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -13,7 +16,7 @@ const ExerciseItem = ({ exercise, details, onDeleteSet, onDeleteExercise, sessio
   return (
     <div key={exercise} className="exercise-item">
             <h2>{exercise}</h2>
-            <button className="save-btn" >
+            <button className="save-btn" onClick={()=>handleSaveExercise(sessionId, exercise)}>
               Save Exercise
             </button>
             <button className="delete-btn" onClick={() => onDeleteExercise(sessionId, exerciseId)}>
@@ -37,7 +40,7 @@ const ExerciseItem = ({ exercise, details, onDeleteSet, onDeleteExercise, sessio
                     <input
                       type="number"
                       value={ set.reps}
-                      // onChange={(e) => handleInputChange(exercise, index, 'reps', e.target.value)}
+                      onChange={(e) => handleInputChange(exercise, index, 'reps', e.target.value)}
                       className="input-field"
                     />
                   </td>
@@ -45,7 +48,7 @@ const ExerciseItem = ({ exercise, details, onDeleteSet, onDeleteExercise, sessio
                     <input
                       type="number"
                       value={set.weight}
-                      // onChange={(e) => handleInputChange(exercise, index, 'weight', e.target.value)}
+                      onChange={(e) => handleInputChange(exercise, index, 'weight', e.target.value)}
                       className="input-field"
                     />
                   </td>

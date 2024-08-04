@@ -28,31 +28,33 @@ const Exercises = () => {
     }
   };
 
-  // const handleInputChange = (exercise, setIndex, field, value) => {
-  //   setEditData(prevData => ({
-  //     ...prevData,
-  //     [exercise]: {
-  //       ...prevData[exercise],
-  //       sets: prevData[exercise]?.sets.map((set, index) => 
-  //         index === setIndex ? { ...set, [field]: value } : set
-  //       ) || [{ [field]: value }]
-  //     }
-  //   }));
-  // };
+  const handleInputChange = (exercise, setIndex, field, value) => {
+    setData((prevData) => ({
+      ...prevData,
+      [exercise]: {
+        ...prevData[exercise],
+        sets: prevData[exercise].sets.map((set, index) =>
+          index === setIndex ? { ...set, [field]: value } : set
+        ),
+      },
+    }));
+  };
 
-  // const handleSave = async (exercise) => {
-  //   try {
-  //     const updatedExercise = {
-  //       exercise_name: exercise,
-  //       sets: editData[exercise]?.sets || []
-  //     };
-  //     await apis.updateExercise(sessionId, updatedExercise); // Assuming updateExercise API exists
-  //     fetchExercisesAndDetails();
-  //   } catch (error) {
-  //     console.error('Error updating exercise', error);
-  //     setError('Failed to update exercise');
-  //   }
-  // };
+  const handleSaveExercise = async (sessionId, exercise) => {
+    const exerciseToUpdate = data[exercise];
+    const sets = exerciseToUpdate.sets;
+    
+    const exercise_id = exerciseToUpdate.exercise_id;
+    const payload = { exercise, sets };
+    console.log("payload is:", payload);
+  
+    try {
+      await apis.updateExerciseAndDetails(sessionId, exercise_id, payload); 
+      fetchExercisesAndDetails(); // Refresh data after update
+    } catch (error) {
+      setError('Failed to save exercise');
+    }
+  };
 
   const handleAddSet = async (sessionId, exerciseId, newSet) => {
     try{
@@ -119,6 +121,8 @@ const Exercises = () => {
             sessionId={sessionId}
             exerciseId={details.exercise_id}
             onAddSet={handleAddSet}
+            handleInputChange={handleInputChange}
+            handleSaveExercise={handleSaveExercise}
           />
         ))}
       </div>

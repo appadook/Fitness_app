@@ -63,9 +63,9 @@ router.get('/:session_id', async (req, res) => {
       `;
       const values =[session_id];
       const result = await db.query(query, values);
-      data = result.rows;
+      var data = result.rows;
 
-      bigdata = {};
+      var bigdata = {};
 
       data.forEach((exercise) => {
         bigdata[exercise.exercise_name] = {
@@ -109,8 +109,6 @@ router.get('/:session_id', async (req, res) => {
       }
   }
 );
-
-
 
 
 // POST route to add a new exercise and its details
