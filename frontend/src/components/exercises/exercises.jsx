@@ -44,14 +44,18 @@ const Exercises = () => {
     const exerciseToUpdate = data[exercise];
     const sets = exerciseToUpdate.sets;
     
+    
     const exercise_id = exerciseToUpdate.exercise_id;
-    const payload = { exercise, sets };
-    console.log("payload is:", payload);
-  
+    const payload = { exercise_name: exercise, sets: sets };
+
+    console.log(sessionId);
+    console.log(exercise_id);
+    console.log(payload);
     try {
-      await apis.updateExerciseAndDetails(sessionId, exercise_id, payload); 
-      fetchExercisesAndDetails(); // Refresh data after update
+      await apis.updateExerciseAndDetais(sessionId, exercise_id, payload); 
+      fetchExercisesAndDetails(); 
     } catch (error) {
+      console.error('Error saving exercise', error);
       setError('Failed to save exercise');
     }
   };

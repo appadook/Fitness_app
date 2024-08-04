@@ -32,7 +32,7 @@ export const deleteWk = (weekId, session) => api.delete(`/weeksSessions/${weekId
 export const getExercise = (sessionId) => api.get(`/exercise/${sessionId}`);
 export const createNewExercise = (sessionId, newExercise) => api.post(`/exercise/${sessionId}`, newExercise);
 export const createNewSet = (sessionId, exerciseId, newSet) => api.post(`/exercise/${sessionId}/${exerciseId}`, newSet);
-export const updateExerciseAndDetais = (sessionId, exerciseId) => api.put(`/exercise/${sessionId}/${exerciseId}`);
+export const updateExerciseAndDetais = (sessionId, exerciseId, updatedExercise) => api.put(`/exercise/${sessionId}/${exerciseId}`, updatedExercise);
 export const deleteExerciseAndDetails = (sessionId, exerciseId) => api.delete(`/exercise/${sessionId}/${exerciseId}`);
 export const deleteSet = (setId) => api.delete(`/exercise/${setId}`);
 
