@@ -5,20 +5,28 @@
     /* background-color: rgba(68, 74, 121, 0.1); */
     padding: 5px;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     display: flex;
   }
   
   .session-name {
     text-decoration: none;
-    color: #aea5a5;
+    color: #ffffff;
     transition: color 0.2s, transform 0.2s;
     font-size: large;
     margin-right: 5%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bolder;
+    border: solid 2px rgb(255, 255, 255);
+    width: 150px;
+
   }
   
   .session-name:hover {
-    color: #f7f7fa;
+    color: #cbd715;
     transform: scale(1.05);
   }
   

@@ -1,10 +1,10 @@
 .week-section {
-    background-color: rgba(43, 98, 181, 0.5); /* Slightly transparent background */
+    background-color: rgba(43, 98, 181, 0.5);
     border-radius: 10px;
     border: 2px solid white;
-    padding: 20px;
+    padding: 0px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 20% ;
+    /* margin: 20px 20% ; */
   }
 
   
@@ -34,19 +34,3 @@
     }
 
   
-  
-  /* .sessions-list .session-item button {
-    background-color: #ff4b4b;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-  }
-  
-  .sessions-list .session-item button:hover {
-    background-color: #e63e3e;
-    transform: scale(1.05);
-  }
-   */

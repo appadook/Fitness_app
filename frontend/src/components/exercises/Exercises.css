@@ -1,16 +1,20 @@
 .weeks-sessions-container {
-  padding: 20px;
+  
 }
 
-.session-exercises {
+
+.exercises{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 10px; /* Reduced gap between exercise items */
-  color: black;
-  margin: 50px;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the space between items as needed */
+  justify-content: center;
 }
 
 .exercise-item {
+  flex: 0 1 calc(50% - 20px); /* Take up 50% of the container's width minus the gap */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  color: black;
   border: 1px solid #ccc;
   padding: 10px; /* Reduced padding */
   margin-bottom: 5px; /* Reduced margin */
@@ -67,4 +71,28 @@ button.delete-btn {
 
 button.delete-btn:hover {
   background-color: darkred;
+}
+
+button.new-exercise-btn{
+  margin: 20px;
+  background-color: rgb(45, 122, 188);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+}
+
+button.new-exercise-btn:hover{
+ border: solid 2px white;
+ transform: scale(1.1);
+}
+
+button.new-set-btn{
+  background-color: rgb(39, 130, 66);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  width: 100%;
 }

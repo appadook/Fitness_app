@@ -1,23 +1,59 @@
-.weeks-sessions-container{
+.weeks-sessions-container {
     color: white;
     /* border: 1px solid white; */
-}
-
-.week-section{
-    color: white;
-    /* border: 1px solid white; */
-}
-
-.week-section h2{
-    color: white;
-}
-
-.no-visited-link:link {
-    color: inherit; /* inherit color from parent */
-    text-decoration: none; 
   }
   
-.no-visited-link:visited {
-color: inherit; /* ensure visited links retain the same color */
-text-decoration: none; 
-}
+  .weeks-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the space between items as needed */
+    justify-content: center;
+  }
+  
+  .week-item {
+    flex: 0 1 calc(50% - 20px); /* Take up 50% of the container's width minus the gap */
+    box-sizing: border-box;
+    border: 1px solid white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+  }
+  
+  .week-section {
+    color: white;
+    /* border: 1px solid white; */
+  }
+  
+  .week-section h2 {
+    color: white;
+  }
+  
+  .no-visited-link:link {
+    color: inherit; /* inherit color from parent */
+    text-decoration: none;
+  }
+  
+  .no-visited-link:visited {
+    color: inherit; /* ensure visited links retain the same color */
+    text-decoration: none;
+  }
+  
+  button.add-week-btn{
+    margin: 20px;
+    background-color: rgb(45, 122, 188);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  button.add-week-btn:hover{
+   border: solid 2px white;
+   transform: scale(1.1);
+   background-color: rgb(13, 41, 90);
+  }

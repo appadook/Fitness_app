@@ -104,7 +104,7 @@ const Exercises = () => {
     <div className="weeks-sessions-container">
       <h1>Exercises for Session: {session}</h1>
       {error && <p>{error}</p>}
-      {console.log("data is:", data)}
+      {/* {console.log("data is:", data)} */}
       <button className='new-exercise-btn' onClick={openModal}> Add Exercise</button>
       <AddExerciseModal
           isOpen={isModalOpen}
@@ -112,9 +112,10 @@ const Exercises = () => {
           onAdd={handleAddExercise}
           sessionId = {sessionId}
       />
-      <div className="session-exercises">
+      <div className="exercises">
         {Object.entries(data).map(([exercise, details]) => (
-          <ExerciseItem 
+          <ExerciseItem className='exercise-item'
+            key={details.exerciseId}
             exercise={exercise}
             details={details} 
             onDeleteSet={handleDeleteSet}

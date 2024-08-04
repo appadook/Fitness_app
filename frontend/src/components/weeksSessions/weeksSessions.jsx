@@ -69,7 +69,7 @@ const WeeksSessions = () => {
     <div className="weeks-sessions-container">
       <h1>Program Breakdown</h1>
       {error && <p>{error}</p>}
-      <button onClick={openModal}>Add Week</button> 
+      <button className='add-week-btn' onClick={openModal}>Add Week</button> 
       <AddWeekModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -77,8 +77,9 @@ const WeeksSessions = () => {
         workoutId={workoutId}
       /> 
 
+      <div className='weeks-container'>
       {data.rows && data.rows.map((item) => (
-        <WeekItem
+        <WeekItem className='week-item'
           key={item.week_number}
           weekNumber={item.week_number}
           weekId={item.week_id}
@@ -87,6 +88,7 @@ const WeeksSessions = () => {
           workoutId={item.workoutId}
         />
       ))}
+      </div>
     </div>
   );
 };
