@@ -11,7 +11,7 @@ body {
 }
 
 .personal-records-page h1 {
-  color: #c5c7dc;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -111,4 +111,17 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .new-pr-btn{
   margin: 10px;
+  font-size: 24px;
+  width: 500px;
+  padding: 10px;
+  background-color: tomato;
+  font-weight: bolder;
+  border: none;
+  transition: 0.2s;
+}
+
+.new-pr-btn:hover{
+  transform: scale(1.1);
+  background-color: tomato;
+  border: 1px solid white;
 }
