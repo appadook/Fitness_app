@@ -19,6 +19,11 @@
     list-style: none; /* Remove default list styling */
 }
 
-.workout-item{
-    border: 1px solid white;
+
+.add-workout-btn{
+    background-color: var(--secondary-color);
+}
+
+.add-workout-btn:hover{
+    background-color: var(--success-color);
 }

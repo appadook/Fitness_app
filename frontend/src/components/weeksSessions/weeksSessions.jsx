@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import apis from '../../services/api'; // Import the api functions
 import './WeeksSessions.css';
 import WeekItem from './weeks/weekItem';
@@ -84,7 +84,6 @@ const WeeksSessions = () => {
           weekNumber={item.week_number}
           weekId={item.week_id}
           onDeleteWeek={handleDeleteWeek}
-          // onDeleteSession={handleDeleteSession}
           workoutId={item.workoutId}
         />
       ))}

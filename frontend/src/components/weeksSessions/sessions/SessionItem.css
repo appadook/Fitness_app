@@ -15,19 +15,19 @@
     transition: color 0.2s, transform 0.2s;
     font-size: large;
     margin-right: 5%;
-    border: none;
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
     font-weight: bolder;
-    border: solid 2px rgb(255, 255, 255);
     width: 150px;
 
   }
   
   .session-name:hover {
-    color: #cbd715;
+    color: var(--button-hover-color);
     transform: scale(1.05);
+    box-shadow: 12px 12px 12px rgba(0,0,0,0.7),
+        -10px -10px -10px white;
   }
   
   .session-item button {
@@ -45,3 +45,19 @@
     transform: scale(1.05);
   }
   
+
+  .session-name::before{
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 0;
+    height: 3px;
+    background: var(--button-hover-color);
+    transition: .5s;
+    border-radius: 1000px;
+  }
+
+  .session-name::before{
+    width: 100%;
+  }

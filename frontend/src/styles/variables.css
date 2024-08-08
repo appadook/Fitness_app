@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #a10c2a; /* Crimson */
+    --secondary-color: #708090; /* Slate Gray */
+    --accent-color: #ffd700; /* Gold */
+    --text-color: #ffffff; /* White */
+    --background-color: #2c2c2c; /* Charcoal */
+    --button-hover-color: #a10d2d; /* Dark Crimson */
+    --error-color: #dc3545; /* Red */
+    --success-color: #28a745; /* Green */
+    --white-color: #ffffff; /* White */
+    --border-color: #d6991d; /* Light Border Gray */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Shadow Color */
+  }
+  

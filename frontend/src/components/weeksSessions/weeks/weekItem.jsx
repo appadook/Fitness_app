@@ -8,7 +8,7 @@ import './WeekItem.css';
 const WeekItem = ({ weekNumber, weekId, onDeleteWeek, onDeleteSession, workoutId }) => {
   
   const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const WeekItem = ({ weekNumber, weekId, onDeleteWeek, onDeleteSession, workoutId
     <div className="week-section">
       <h2>Week {weekNumber}</h2>
       <button className="delete-btn" onClick={() => onDeleteWeek(weekId)}>Delete Week</button>
-      <button onClick={openModal}>Add Session</button>
+      <button onClick={openModal} className='add-session-btn'>Add Session</button>
       <AddSessionModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}

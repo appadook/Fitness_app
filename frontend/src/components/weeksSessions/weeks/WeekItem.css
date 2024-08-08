@@ -1,9 +1,10 @@
 .week-section {
-    background-color: rgba(43, 98, 181, 0.5);
+    background-color: var(--secondary-color);
     border-radius: 10px;
-    border: 2px solid white;
+    border: none;
     padding: 0px 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--shadow-color);
+    /* margin: 20px 20% ; */
   }
 
   
@@ -13,13 +14,14 @@
   }
 
 .delete-btn {
-    background-color: #ff4b4b;
+    background-color: var(--error-color);
     color: white;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
+    width: 80%;
   }
   
 .delete-btn:hover {
@@ -32,4 +34,11 @@
     padding: 0;
     }
 
-  
+.add-session-btn{
+  background-color: var(--success-color);
+  width: 80%;
+}
+
+.add-session-btn:hover{
+  background-color: var(--success-color);
+}

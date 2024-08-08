@@ -1,10 +1,17 @@
 .home-container h1 {
-    color: #727ab4;
+  font-size: 40px;
+  background: linear-gradient(to top, rgba(128, 0, 128, 0.5), rgb(233, 93, 29));
+  background-clip: text;
+  color: transparent;
+  box-shadow: 12px 12px 12px rgba(255, 255, 255, 0.272);
   }
+
+
   
 .home-container p {
     font-size: 18px;
-    color: #ffffff;
+    color: var(--text-color);
+    margin-bottom: 5vh;
 
   }
 
@@ -22,7 +29,7 @@
 
 /* Styles for the Card component */
 .card {
-  border: 3px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 16px;
   margin: 16px;
@@ -30,7 +37,8 @@
   transition: transform 0.2s;
   height: 110px;
   width: 75%;
-  background-color: rgb(31, 37, 82, 0.5); /* Dark Purple */
+  /* background-color: var(--primary-color); */
+  backdrop-filter: blur(40px);
 }
 
 .card:hover {
@@ -39,7 +47,7 @@
 
 .card-link {
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
 }
 
 .card-content h2 {
@@ -50,6 +58,6 @@
 
 .card-content p {
   margin: 8px 0 0;
-  color: #949ee8;
+  color: var(--text-color);
   font-size: 20px;
 }

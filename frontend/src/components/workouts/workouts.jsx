@@ -67,7 +67,7 @@ const Workouts = () => {
     <div className="workouts-container">
       <h1>Workout Program Dashboard</h1>
       {error && <p className="error">{error}</p>} {/* Display error message */}
-      <button onClick={openModal}>Add Workout</button> 
+      <button onClick={openModal} className='add-workout-btn'>Add Workout</button> 
       <AddWorkoutModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}

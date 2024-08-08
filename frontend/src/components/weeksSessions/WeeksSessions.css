@@ -1,25 +1,45 @@
-.weeks-sessions-container {
+.weeks-sessions-container{
+  display: grid;
+  grid-template-columns: 1fr; /* Each item takes up the full row */
+  justify-items: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  gap: 20px; /* Adjust the gap between items as needed */
+}
+
+
+.weeks-sessions-container h1 {
+    margin-top: 48px;
     color: white;
+    font-size: 40px;
+    font-weight: bolder;
+    
+
     /* border: 1px solid white; */
   }
-  
-  .weeks-container {
-    width: 100%;
+ 
+
+  .weeks-container{
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Adjust the space between items as needed */
-    justify-content: center;
+    gap: 20px;
+    width: 300px;
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    background-color: transparent;
+    border-radius: 14px;
+
   }
   
-  .week-item {
-    flex: 0 1 calc(50% - 20px); /* Take up 50% of the container's width minus the gap */
+ 
+
+  .week-item{
+    scroll-snap-align: center;
     box-sizing: border-box;
-    border: 1px solid white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
+    padding: 20px 30px;
+    flex-shrink: 0;
+    width: 300px;
+    background-color: gray;
+    border-radius: 14px;
+    text-align: center;
   }
   
   .week-section {
@@ -43,17 +63,21 @@
   
   button.add-week-btn{
     margin: 20px;
-    background-color: rgb(45, 122, 188);
+    margin-bottom: 40px;
+    background-color: green;
     border: none;
     cursor: pointer;
     font-size: 20px;
-    color: white;
+    color: var(--text-color);
     padding: 10px;
     border-radius: 5px;
+    transition: background-color 0.2s, transform 0.2s;
+    width: 50%;
   }
   
   button.add-week-btn:hover{
-   border: solid 2px white;
-   transform: scale(1.1);
-   background-color: rgb(13, 41, 90);
+   border: none;
+   transform: scale(1.05);
+   background-color: var(--success-color);
   }
+

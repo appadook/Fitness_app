@@ -1,36 +1,36 @@
 .view-weeks-link:link {
-    color: blue; /* inherit color from parent */
+    color: var(--text-color);
     text-decoration: none; 
   }
   
   .view-weeks-link:visited {
-color: blue; /* ensure visited links retain the same color */
-text-decoration: none; 
+color: var(--text-color);
 }
 
 /* General Styles */
 .workout-item {
-  background-color: rgb(31, 37, 82, 0.7); /* Dark Purple */
+  /* background-color: var(--primary-color); */
+  backdrop-filter: blur(30px);
   color: white;
   padding: 20px;
   margin: 15px 15px;
   border-radius: 10px;
   list-style: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-color);
   transition: transform 0.3s, box-shadow 0.3s;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   width: 80%;
 }
 
 .workout-item:hover {
   transform: scale(1.02);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 8px var(--shadow-color);
 }
 
 .workout-item h2 {
   margin: 0;
   font-size: 24px;
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 1px solid var(--accent-color);
   padding-bottom: 10px;
 }
 
@@ -41,8 +41,8 @@ text-decoration: none;
 
 .view-weeks-link {
   display: inline-block;
-  background-color: #ffffff;
-  color: #01030c; /* Dark Purple */
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
@@ -53,12 +53,13 @@ text-decoration: none;
 
 .view-weeks-link:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  background-color: var(--success-color);
 }
 
 button {
-  background-color: #ffffff;
-  color: #444a79; /* Dark Purple */
+  background-color: var(--button-color);
+  color: var(--text-color);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -70,22 +71,19 @@ button {
 }
 
 button:hover {
-  background-color: #7f84aa; /* Dark Purple */ 
+  background-color: var(--button-hover-color);
   color: #ffffff;
   transform: scale(1.05);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.active-btn{
-
-}
 
 .delete-btn{
-  background-color: #ac4141; /* Dark Purple */ 
+  background-color: var(--error-color); 
 
   color: #ffffff;
 }
 
 .delete-btn:hover{
-  background-color: #ac4141;
+  background-color: var(--button-hover-color);
 }

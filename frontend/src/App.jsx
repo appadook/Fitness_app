@@ -10,6 +10,7 @@ import Exercises from './components/exercises/exercises';
 import PersonalRecords from './components/personalRecords/personalRecords';
 // import LogWorkout from './components/LogWorkout/LogWorkout';
 import './App.css';
+import './styles/variables.css';
 
 const App = () => {
   return (
