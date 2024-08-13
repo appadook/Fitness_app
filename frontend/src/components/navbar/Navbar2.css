@@ -63,7 +63,7 @@ body{
     position: relative;
   }
 
-  .navbar-item::before{
+  .navbar-item:not(:last-child)::before{
     content: '';
     position: absolute;
     bottom: -10px;
@@ -75,7 +75,7 @@ body{
     border-radius: 1000px;
   }
 
-  .navbar-item:hover::before{
+  .navbar-item:not(:last-child):hover::before{
     width: 100%;
   }
 
@@ -88,4 +88,24 @@ body{
   .navbar-link:hover{
     color: white;
   }
+
+  .logout-btn {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: var(--secondary-color);
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .logout-btn:hover {
+    background-color: var(--button-hover-color);
+    background-color: transparent;
+    box-shadow: 12px 12px 12px rgba(0,0,0,1),
+        -10px -10px -10px white;
+  }
+  
   

@@ -75,9 +75,9 @@ const Navbar = ({ signOut, session }) => {
             </Link>
           </li>
         ))}
-        <li className='navbar-item'>
-          <button onClick={signOut} className='navbar-link'>Logout</button>
         </li>
+        <li className='navbar-item'>
+          <button onClick={signOut} className='logout-btn'>Logout</button>
         </li>
       </ul>
     </nav>
