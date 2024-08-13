@@ -8,6 +8,7 @@ import WeekSessions from './components/weeksSessions/weeksSessions';
 import Exercises from './components/exercises/exercises';
 import PersonalRecords from './components/personalRecords/personalRecords';
 import AuthPage from './components/Login';
+import LoadingSpinner from './components/loading/loading';
 import { supabase } from './services/supabaseClient';
 import './App.css';
 import './styles/variables.css';
@@ -15,11 +16,13 @@ import './styles/variables.css';
 
 const App = () => {
   const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
+      setLoading(false);
     };
 
     fetchSession();
@@ -28,6 +31,7 @@ const App = () => {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
+      setLoading(false);
     })
 
     return () => subscription.unsubscribe()
@@ -35,11 +39,15 @@ const App = () => {
 
 
   const signOut = async () => {
+    setLoading(true);
     await supabase.auth.signOut();
     setSession(null);
+    setLoading(false);
   }
   
-
+  if (loading){
+    return (<LoadingSpinner/>);
+  }
   if (!session) {
     return (
     <AuthPage/>
