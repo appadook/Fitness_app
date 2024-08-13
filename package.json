@@ -14,7 +14,11 @@
     "concurrently": "^6.0.0"
   },
   "dependencies": {
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.45.1",
+    "install": "^0.13.0",
+    "npm": "^10.8.2",
     "react-modal": "^3.16.1"
   }
 }

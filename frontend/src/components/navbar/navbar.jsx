@@ -35,7 +35,7 @@ import './Navbar2.css';
 import BackButton from '../backBtn/backButton';
 import Logo from '../../assets/logo.svg';
 
-const Navbar = () => {
+const Navbar = ({ signOut, session }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const location = useLocation();
   const navbarRef = useRef(null);
@@ -75,6 +75,9 @@ const Navbar = () => {
             </Link>
           </li>
         ))}
+        <li className='navbar-item'>
+          <button onClick={signOut} className='navbar-link'>Logout</button>
+        </li>
         </li>
       </ul>
     </nav>
