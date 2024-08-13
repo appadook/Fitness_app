@@ -11,8 +11,7 @@ import AuthPage from './components/Login';
 import { supabase } from './services/supabaseClient';
 import './App.css';
 import './styles/variables.css';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
+
 
 const App = () => {
   const [session, setSession] = useState(null);
@@ -34,6 +33,7 @@ const App = () => {
     return () => subscription.unsubscribe()
   }, [])
 
+
   const signOut = async () => {
     await supabase.auth.signOut();
     setSession(null);
@@ -42,8 +42,10 @@ const App = () => {
 
   if (!session) {
     return (
-    <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
+    <AuthPage/>
   );}
+
+  
 
   return (
     <Router>
