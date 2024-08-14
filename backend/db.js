@@ -18,6 +18,6 @@ client.connect((err) => {
     console.log('Connected to PostgreSQL');
 });
 
-module.exports = client;``
+module.exports = client;
 
 

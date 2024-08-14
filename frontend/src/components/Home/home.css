@@ -36,7 +36,7 @@
   text-align: center;
   transition: transform 0.2s;
   height: 110px;
-  width: 75%;
+  width: min(75%, 550px);
   /* background-color: var(--primary-color); */
   backdrop-filter: blur(40px);
 }

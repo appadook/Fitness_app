@@ -53,7 +53,6 @@ const App = () => {
     <AuthPage/>
   );}
 
-  
 
   return (
     <Router>
