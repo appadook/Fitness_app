@@ -4,19 +4,38 @@ import WorkoutItem from './workoutItem';
 import AddWorkoutModal from './addWorkoutModal';
 import './workouts.css';
 
-const Workouts = () => {
+const Workouts = (supabase_id) => {
+  
+  const [userId, setUserId] = useState('');
   const [workouts, setWorkouts] = useState([]);
   const [error, setError] = useState(null); // Add state to handle errors
-  const [isModalOpen, setIsModalOpen] = useState(false); // NEW CODE
-
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  
 
   useEffect(() => {
     fetchWorkouts();
   }, []);
 
+  
+
+  const fetchUserId = async () => {
+    
+    try{
+      const response = await apis.getUserId(supabase_id.supabase_id);
+      
+      setUserId(response.data.rows[0])
+      console.log('userId is is:', userId);
+      
+    }catch (error) {
+      console.error('Error fetching user id', error);
+      setError('Failed to fetch user id');
+    }
+  };
+  
+
   const fetchWorkouts = async () => {
     try {
-      const response = await apis.getWorkouts();
+      const response = await apis.getWorkouts(supabase_id.supabase_id);
       if (Array.isArray(response.data.rows)) {
         setWorkouts(response.data.rows);
       } else {
@@ -29,8 +48,9 @@ const Workouts = () => {
   };
 
   const handleAddWorkout = async (newWorkout) => {
+    fetchUserId();
     try {
-      const response = await apis.createWorkout(newWorkout);
+      const response = await apis.createWorkout(userId, newWorkout);
       setWorkouts([...workouts, response.data]);
     } catch (error) {
       console.error('Error adding workout', error);
@@ -60,8 +80,11 @@ const Workouts = () => {
     } 
   }; 
 
-  const openModal = () => setIsModalOpen(true); // NEW CODE
-  const closeModal = () => setIsModalOpen(false); // NEW CODE
+  const openModal = () => setIsModalOpen(true); 
+  const closeModal = () => setIsModalOpen(false); 
+
+
+
 
   return (
     <div className="workouts-container">

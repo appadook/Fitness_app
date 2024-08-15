@@ -17,12 +17,14 @@ import './styles/variables.css';
 const App = () => {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     const fetchSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
-      console.log('session is:', session);
+  
+      setUserId(session.user.id);
       
       setLoading(false);
     };
@@ -37,7 +39,7 @@ const App = () => {
     })
 
     return () => subscription.unsubscribe()
-  }, [])
+  }, [userId])
 
 
   const signOut = async () => {
@@ -63,7 +65,7 @@ const App = () => {
           <Navbar signOut={signOut} session={session}/>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/workouts" element={<Workouts />} />
+            <Route path="/workouts" element={<Workouts supabase_id = {userId} />} />
             <Route path="/weeksSessions/:workoutId" element={<WeekSessions />} />
             <Route path='/weeksSessions/:workoutId/:sessionId/:session' element={<Exercises />} />
             <Route path="/personal-records" element={<PersonalRecords />} />

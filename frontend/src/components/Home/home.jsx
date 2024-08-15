@@ -19,7 +19,7 @@ const Home = () => {
           description = "'All my PRs'"
         />
       </div>
-      {/* Add more content and components as needed */}
+      
     </div>
   );
 };

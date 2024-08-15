@@ -4,9 +4,14 @@ const api = axios.create({
   baseURL: 'http://localhost:3001/api'
 });
 
+//Users requests
+export const getUserId = (sb_id) => api.get(`/users/${sb_id}`);
+
+
+
 // workouts requests
-export const getWorkouts = () => api.get('/workouts');
-export const createWorkout = (workout) => api.post('/workouts', workout);
+export const getWorkouts = (user_id) => api.get(`/workouts/${user_id}`);
+export const createWorkout = (userId, workout) => api.post(`/workouts/${userId}`, workout);
 export const updateWorkout = (id, workout) => api.put(`/workouts/${id}`, workout);
 export const toggleActiveWorkout = (id, active) => api.put(`/workouts/toggle-active/${id}`, { active }); //Testing toggle feature for active prop
 export const deleteWorkout = (id) => api.delete(`/workouts/${id}`);
@@ -60,7 +65,9 @@ const apis = {
   createNewSet,
   updateExerciseAndDetais,
   deleteExerciseAndDetails,
-  deleteSet
+  deleteSet,
+
+  getUserId
 };
 
 export default apis;

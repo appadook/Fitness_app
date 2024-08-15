@@ -3,8 +3,9 @@ const router = express.Router();
 const db = require('../db');
 
 // Get all workouts
-router.get('/', (req, res) => {
-  db.query('SELECT * FROM workouts', (err, results) => {
+router.get('/:userId', (req, res) => {
+  user_id = req.params.userId;
+  db.query('SELECT * FROM workouts WHERE supabase_id = $1', [user_id], (err, results) => {
     if (err) {
       res.status(500).send('Error retrieving data');
       return;
@@ -13,11 +14,13 @@ router.get('/', (req, res) => {
   });
 });
 
+
 // Add a new workout
-router.post('/', (req, res) => {
+router.post('/:userId', (req, res) => {
+    const userId = req.params.userId;
     const { name, purpose, active } = req.body;
-    const query = 'INSERT INTO workouts (name, purpose, active) VALUES ($1, $2, $3) RETURNING *';
-    const values = [name, purpose, active];
+    const query = 'INSERT INTO workouts (name, purpose, active, user_id) VALUES ($1, $2, $3, $4) RETURNING *';
+    const values = [name, purpose, active, userId];
   
     db.query(query, values, (err, result) => {
       if (err) {
