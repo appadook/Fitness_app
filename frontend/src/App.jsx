@@ -22,6 +22,8 @@ const App = () => {
     const fetchSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setSession(session);
+      console.log('session is:', session);
+      
       setLoading(false);
     };
 
@@ -68,7 +70,7 @@ const App = () => {
             <Route path="/login" element={<AuthPage />} />
           </Routes>
         </div>
-        <Footer />
+        <Footer/>
       </div>
     </Router>
   );
